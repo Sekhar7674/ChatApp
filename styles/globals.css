@@ -1,0 +1,85 @@
+.chat {
+  display: flex;
+  flex-direction: row;
+}
+
+.contacts h2 {
+  text-align: center;
+  color: blue;
+  margin: 0px;
+}
+
+.contact {
+  padding: 10px;
+  min-width: 350px;
+  border: 2px solid rgb(250, 171, 1);
+  background-color: rgb(254, 231, 181);
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+
+.activeCont {
+  padding: 12px 10px;
+  min-width: 250px;
+  border: 2px solid rgb(6, 250, 39);
+  background-color: rgb(65, 176, 80);
+  border-radius: 20px;
+  cursor: pointer;
+  margin: 10px 5px;
+}
+
+.reseverInfo {
+  padding: 15px 10px;
+  margin: 5px;
+  background-color: rgb(124, 183, 209);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.chatBox {
+  flex-grow: 1;
+}
+
+.chat_input {
+  display: flex;
+  position: sticky;
+  align-items:center;
+  bottom: 10;
+}
+
+.chat_input input {
+  flex-grow: 1;
+  width: auto;
+  height: 40px;
+}
+
+.messageBox {
+  margin: 5px 25px;
+  text-align: start;
+}
+
+.my_messageBox {
+  margin: 5px 25px;
+  text-align: end;
+}
+
+.messagesList {
+  height: 83vh;
+  overflow: auto;
+}
+
+.messageBox .message {
+  padding: 10px;
+  border-radius: 10px;
+  background-color: aqua;
+  width: fit-content;
+}
+
+.my_messageBox .message {
+  margin-left: auto;
+  border-radius: 10px;
+  padding: 10px;
+  background-color: rgb(55, 255, 0);
+  width: fit-content;
+}
