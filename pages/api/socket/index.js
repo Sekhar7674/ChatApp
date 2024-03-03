@@ -1,4 +1,4 @@
-import { getUsers, insertMessage } from "functions/socket_functions";
+import { getMessages, getUsers, insertMessage } from "functions/socket_functions";
 import { Server } from "socket.io";
 
 let users = {}
@@ -29,6 +29,8 @@ export default function SocketHandler(req, res) {
         delete senderAndResever[keyToRemove]
       }
       senderAndResever[user_id] = resever
+      const mes=await getMessages(user_id,resever)
+      io.to(users[user_id]).emit('setResever', {mes});
     })
 
     socket.on("get contacts", async function ({ user_id }) {
@@ -38,13 +40,11 @@ export default function SocketHandler(req, res) {
 
     socket.on("send message", async function ({ user_id, resever_id, message }) {
       try {
-        console.log("mesage message",message)
         io.to(users[user_id]).emit('send message', { user_id, resever_id, message });
         if (user_id == senderAndResever[resever_id]) {
           io.to(users[senderAndResever[user_id]]).emit('send message', { user_id, resever_id, message });
         }
-        const mesres = await insertMessage(message, user_id, resever_id)
-        console.log("mesage res",mesres)
+         await insertMessage(message, user_id, resever_id)
       } catch (error) {
         console.error('Error sending message:', error);
       }

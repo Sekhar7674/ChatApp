@@ -60,6 +60,9 @@ export default ({ user }) => {
 
   useEffect(() => {
     socket?.emit("setResever", { user_id: user.id, resever: resever.id });
+    socket?.on("setResever" ,async function ({ mes }) {
+      setMessages(mes||[])
+    })
   }, [resever])
   1
   const sendMessage = () => {
